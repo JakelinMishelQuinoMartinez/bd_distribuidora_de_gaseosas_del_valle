@@ -66,3 +66,15 @@ CREATE TABLE encargados (
     contrasena VARCHAR(255) NOT NULL,
     activo BOOLEAN DEFAULT TRUE
 ) ENGINE = InnoDB;
+
+-- ======================================================TABLA SEDES
+CREATE TABLE sedes (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(120) NOT NULL,
+    ubicacion VARCHAR(150) NOT NULL,
+    id_municipio INT NOT NULL, 
+    capacidad_almacenamiento INT NOT NULL,
+    id_encargado INT NOT NULL,
+    FOREIGN KEY (id_municipio) REFERENCES municipios(id),
+    FOREIGN KEY (id_encargado) REFERENCES encargados(id)
+)ENGINE = InnoDB;

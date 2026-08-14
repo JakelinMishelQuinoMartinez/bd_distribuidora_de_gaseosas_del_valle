@@ -189,3 +189,18 @@ GROUP BY c.id, c.nombre_completo, c.identificacion, c.telefono,
          c.correo_electronico, m.nombre, d.nombre
 ORDER BY total_pedidos DESC, monto_total_gastado DESC //
 DELIMITER ;
+
+-- Ver todos los clientes activos
+SELECT * FROM vista_clientes_activos;
+
+-- Ver solo clientes VIP
+SELECT * FROM vista_clientes_activos WHERE tipo_cliente = 'VIP';
+
+-- Ver clientes que no han comprado en los últimos 7 días
+SELECT * FROM vista_clientes_activos WHERE dias_desde_ultimo_pedido > 7;
+
+-- Ver clientes por departamento
+SELECT * FROM vista_clientes_activos WHERE departamento = 'Guatemala';
+
+-- Ver top 5 clientes
+SELECT * FROM vista_clientes_activos LIMIT 5;

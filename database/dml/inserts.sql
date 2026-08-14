@@ -88,3 +88,25 @@ INSERT INTO departamentos (nombre) VALUES
 ('Petén'),
 ('Chimaltenango'),
 ('Sololá');
+
+INSERT INTO municipios (nombre, id_departamento) VALUES
+-- Guatemala (id=1)
+('Guatemala', 1), ('Mixco', 1), ('Villa Nueva', 1), ('San Miguel Petapa', 1), ('Amatitlán', 1),
+-- Sacatepéquez (id=2)
+('Antigua Guatemala', 2), ('Jocotenango', 2), ('Sumpango', 2),
+-- Escuintla (id=3)
+('Escuintla', 3), ('Tiquisate', 3), ('Palín', 3),
+-- Quetzaltenango (id=4)
+('Quetzaltenango', 4), ('San Marcos', 4), ('Coatepeque', 4),
+-- Huehuetenango (id=5)
+('Huehuetenango', 5), ('Chiantla', 5), ('Aguacatán', 5),
+-- Alta Verapaz (id=6)
+('Cobán', 6), ('San Pedro Carchá', 6),
+-- Izabal (id=7)
+('Puerto Barrios', 7), ('Morales', 7),
+-- Petén (id=8)
+('Flores', 8), ('San Benito', 8),
+-- Chimaltenango (id=9)
+('Chimaltenango', 9), ('Tecpán', 9),
+-- Sololá (id=10)
+('Sololá', 10), ('Panajachel', 10);

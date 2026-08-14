@@ -82,3 +82,27 @@ FROM pedidos p
 JOIN sedes s ON p.id_sede = s.id
 GROUP BY s.id, s.nombre
 ORDER BY monto_total DESC;
+
+-- ====================================
+-- VISTAS
+-- ====================================
+
+-- ===================================================================================
+-- 1. Muestra la cantidad total de pedidos y ventas por sede.
+-- ===================================================================================
+USE distribuidora_de_gaseosas_del_valle;
+
+DELIMITER //
+CREATE VIEW vista_resumen_pedidos_por_sede AS
+SELECT 
+    s.id AS sede_id,
+    s.nombre AS nombre_sede,
+    s.ubicacion AS ubicacion_sede,
+    COUNT(DISTINCT p.id) AS total_pedidos,
+    IFNULL(SUM(p.total_con_iva), 0) AS total_ventas,
+    IFNULL(AVG(p.total_con_iva), 0) AS promedio_venta
+FROM sedes s
+LEFT JOIN pedidos p ON s.id = p.id_sede
+GROUP BY s.id, s.nombre, s.ubicacion
+ORDER BY total_ventas DESC//
+DELIMITER ;

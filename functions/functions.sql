@@ -61,3 +61,15 @@ BEGIN
     RETURN mensaje;
 END;
 DELIMITER ;
+
+-- Validar si hay stock para el producto ID = 1 con cantidad 10
+SELECT fn_validar_stock(1, 10) AS validacion;
+-- Validar varios productos a la vez
+SELECT 
+    id,
+    nombre,
+    stock_actual,
+    fn_validar_stock(id, 5) AS validacion_stock
+FROM productos
+WHERE id BETWEEN 1 AND 5;
+DELIMITER ;

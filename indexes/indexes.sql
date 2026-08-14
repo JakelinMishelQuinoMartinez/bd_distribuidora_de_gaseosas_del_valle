@@ -17,3 +17,18 @@ CREATE INDEX idx_pedidos_id_cliente ON pedidos(id_cliente);
 
 -- 5. Índice para búsquedas de pedidos por sede
 CREATE INDEX idx_pedidos_id_sede ON pedidos(id_sede);
+
+-- 6. Índice para consultas por fecha
+CREATE INDEX idx_pedidos_fecha ON pedidos(fecha);
+
+-- 7. Índice para filtros por estado
+CREATE INDEX idx_pedidos_estado ON pedidos(estado);
+
+-- 8. Índice compuesto para pedidos frecuentes (cliente + estado)
+CREATE INDEX idx_pedidos_cliente_estado ON pedidos(id_cliente, estado);
+
+-- 9. Índice para JOIN de detalles con pedidos
+CREATE INDEX idx_detalles_id_pedido ON detalles_pedidos(id_pedido);
+
+-- 10. Índice para JOIN de detalles con productos
+CREATE INDEX idx_detalles_id_producto ON detalles_pedidos(id_producto);

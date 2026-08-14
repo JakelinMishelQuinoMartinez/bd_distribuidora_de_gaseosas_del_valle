@@ -54,3 +54,28 @@ BEGIN
     END IF;
 END;
 DELIMITER ;
+
+
+-- 1. Ver los precios actuales y la auditoría vacía
+SELECT * FROM productos WHERE id = 1;
+SELECT * FROM auditoria_precios;
+
+-- 2. Actualizar el precio de un producto
+UPDATE productos 
+SET precio = 6.50 
+WHERE id = 1;
+
+-- 3. Verificar que el precio cambió
+SELECT * FROM productos WHERE id = 1;
+
+-- 4. Verificar que se registró en auditoría
+SELECT * FROM auditoria_precios;
+-- Debería aparecer: id_producto=1, precio_anterior=5.50, precio_nuevo=6.50
+
+-- 5. Hacer otro cambio de precio
+UPDATE productos 
+SET precio = 7.00 
+WHERE id = 1;
+
+-- 6. Ver la auditoría con ambos cambios
+SELECT * FROM auditoria_precios WHERE id_producto = 1;

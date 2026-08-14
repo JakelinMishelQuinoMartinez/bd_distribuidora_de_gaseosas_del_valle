@@ -29,3 +29,9 @@ CREATE TABLE auditoria_precios (
     fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_producto) REFERENCES productos(id)
 ) ENGINE = InnoDB;
+
+-- ======================================================TABLA DEPARTAMENTOS (Guatemala)
+CREATE TABLE departamentos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL
+) ENGINE = InnoDB;

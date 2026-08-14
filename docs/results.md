@@ -3,6 +3,10 @@
 En este documento se presentan los resultados de la implementación y el funcionamiento de los diferentes componentes de la base de datos `distribuidora_de_gaseosas_del_valle`. Cada sección corresponde a un tipo de objeto de la base de datos (funciones, triggers, consultas, etc.) y muestra tanto el código de prueba ejecutado como los resultados obtenidos.
 
 ---
+## 0. Creación de la base de datos e insersión de datos
+![insertar datos](../evidences/insertar_data.png)
+
+
 
 ## 1. Funciones (CREATE FUNCTION)
 
@@ -155,39 +159,32 @@ La transacción se completó con éxito: se creó un nuevo pedido, se asoció su
 ## 4. Consultas SQL
 
 A continuación, se muestran los resultados de las consultas requeridas en el proyecto.
+![consultas](../evidences/consultas.png)
 
-### 1. Productos con stock por debajo del mínimo
-```sql
-SELECT id, nombre, stock_actual, stock_minimo
-FROM productos
-WHERE stock_actual < stock_minimo;
-```
-**Resultado:**
-La consulta lista los productos cuyo stock actual es inferior al mínimo definido, alertando sobre la necesidad de reabastecimiento.
 
-### 2. Productos más vendidos
-```sql
-SELECT p.nombre AS producto, SUM(dp.cantidad) AS total_vendido
-FROM detalles_pedidos dp
-JOIN productos p ON dp.id_producto = p.id
-GROUP BY p.id, p.nombre
-ORDER BY total_vendido DESC
-LIMIT 5;
-```
-**Resultado:**
-Se obtiene un ranking de los 5 productos más vendidos, permitiendo analizar tendencias de consumo.
+### 1. Consultar los productos con stock por debajo del mínimo
+![consulta 1](../evidences/consulta1.png)
 
-### 3. Cliente con mayor número de pedidos
-```sql
-SELECT c.nombre_completo AS cliente, COUNT(p.id) AS total_pedidos
-FROM clientes c
-JOIN pedidos p ON c.id = p.id_cliente
-GROUP BY c.id, c.nombre_completo
-ORDER BY total_pedidos DESC
-LIMIT 1;
-```
-**Resultado:**
-La consulta identifica al cliente más leal basado en la cantidad de pedidos realizados.
+### 2. Consultar los pedidos realizados entre dos fechas (BETWEEN).
+![consulta 2](../evidences/consulta2.png)
+
+### 3. Listar los productos más vendidos (con JOIN y GROUP BY)
+![consulta 3](../evidences/consulta3.png)
+
+### 4. Mostrar clientes y la cantidad de pedidos realizados
+![consulta 4](../evidences/consulta4.png)
+
+### 5. Buscar clientes por nombre parcial usando LIKE
+![consulta 5](../evidences/consulta5.png)
+
+### 6. Consultar productos de ciertas categorías usando IN
+![consulta 6](../evidences/consulta6.png)
+
+### 7. Mostrar el cliente con mayor número de pedidos (subconsulta)
+![consulta 7](../evidences/consulta7.png)
+
+### 8. Consultar pedidos y sus totales agrupados por sede
+![consulta 8](../evidences/consulta8.png)
 
 ---
 

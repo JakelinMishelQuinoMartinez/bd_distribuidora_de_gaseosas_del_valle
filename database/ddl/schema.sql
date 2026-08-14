@@ -78,3 +78,16 @@ CREATE TABLE sedes (
     FOREIGN KEY (id_municipio) REFERENCES municipios(id),
     FOREIGN KEY (id_encargado) REFERENCES encargados(id)
 )ENGINE = InnoDB;
+
+-- ======================================================TABLA PEDIDOS
+CREATE TABLE pedidos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    id_cliente INT NOT NULL,
+    id_sede INT NOT NULL,
+    total_sin_iva DECIMAL(10,2) NOT NULL,
+    total_con_iva DECIMAL(10,2) NOT NULL,
+    estado ENUM('pendiente', 'en_proceso', 'enviado', 'entregado', 'cancelado') DEFAULT 'pendiente',
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id),
+    FOREIGN KEY (id_sede) REFERENCES sedes(id)
+) ENGINE = InnoDB;

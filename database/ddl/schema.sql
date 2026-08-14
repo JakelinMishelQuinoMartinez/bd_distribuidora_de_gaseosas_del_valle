@@ -91,3 +91,15 @@ CREATE TABLE pedidos (
     FOREIGN KEY (id_cliente) REFERENCES clientes(id),
     FOREIGN KEY (id_sede) REFERENCES sedes(id)
 ) ENGINE = InnoDB;
+
+-- ======================================================TABLA DETALLES_PEDIDOS
+CREATE TABLE detalles_pedidos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_pedido INT NOT NULL,
+    id_producto INT NOT NULL,
+    cantidad INT NOT NULL,
+    precio_unidad DECIMAL(10,2) NOT NULL,
+    iva DECIMAL(5,2) NOT NULL DEFAULT 12.00, 
+    FOREIGN KEY (id_pedido) REFERENCES pedidos(id),
+    FOREIGN KEY (id_producto) REFERENCES productos(id)
+) ENGINE = InnoDB;

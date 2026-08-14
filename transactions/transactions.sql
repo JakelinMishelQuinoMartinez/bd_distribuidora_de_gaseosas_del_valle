@@ -43,10 +43,6 @@ BEGIN
     INSERT INTO detalles_pedidos (id_pedido, id_producto, cantidad, precio_unidad)
     VALUES (@id_pedido, p_producto, p_cantidad, precio);
     
-    -- Descontar stock
-    UPDATE productos SET stock_actual = stock_actual - p_cantidad
-    WHERE id = p_producto;
-    
     -- Guardar todo
     COMMIT;
     SELECT 'Compra exitosa' AS mensaje;

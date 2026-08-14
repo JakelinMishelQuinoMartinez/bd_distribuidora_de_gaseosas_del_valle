@@ -110,3 +110,12 @@ INSERT INTO municipios (nombre, id_departamento) VALUES
 ('Chimaltenango', 9), ('Tecpán', 9),
 -- Sololá (id=10)
 ('Sololá', 10), ('Panajachel', 10);
+
+-- ======================================================
+-- 4. ENCARGADOS
+-- ======================================================
+INSERT INTO encargados (nombre_completo, identificacion, correo_electronico, nombre_usuario, contrasena, activo) VALUES
+('Carlos Eduardo Ramírez', '1234567890101', 'carlos.ramirez@distribuidora.com', 'cramirez', 'Carlos2026', TRUE),
+('María Fernanda López', '1234567890102', 'maria.lopez@distribuidora.com', 'mlopez', 'Maria2026', TRUE),
+('José Miguel Hernández', '1234567890103', 'jose.hernandez@distribuidora.com', 'jhernandez', 'Jose2026', TRUE),
+('Ana Lucía Morales', '1234567890104', 'ana.morales@distribuidora.com', 'amorales', 'Ana2026', TRUE);

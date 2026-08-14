@@ -115,3 +115,31 @@ SELECT * FROM vista_resumen_pedidos_por_sede WHERE total_ventas > 0;
 
 -- Ver la sede con más ventas
 SELECT * FROM vista_resumen_pedidos_por_sede ORDER BY total_ventas DESC LIMIT 1;
+
+
+-- ===================================================================================
+-- 2. Lista productos con stock_actual <= stock_minimo.
+-- ===================================================================================
+DELIMITER //
+CREATE VIEW vista_productos_bajo_stock AS
+SELECT 
+    p.id AS producto_id,
+    p.nombre AS nombre_producto,
+    p.volumen_ml,
+    p.precio,
+    p.stock_actual,
+    p.stock_minimo,
+    c.nombre AS categoria,
+    (p.stock_minimo - p.stock_actual) AS unidades_faltantes,
+    ROUND((p.stock_actual / p.stock_minimo) * 100, 2) AS porcentaje_stock,
+    CASE 
+        WHEN p.stock_actual = 0 THEN 'CRÍTICO - SIN STOCK'
+        WHEN (p.stock_minimo - p.stock_actual) >= 10 THEN 'URGENTE'
+        WHEN (p.stock_minimo - p.stock_actual) >= 5 THEN 'BAJO'
+        ELSE 'ATENCIÓN'
+    END AS nivel_riesgo
+FROM productos p
+JOIN categorias c ON p.id_categoria = c.id
+WHERE p.stock_actual <= p.stock_minimo
+ORDER BY unidades_faltantes DESC //
+DELIMITER ;

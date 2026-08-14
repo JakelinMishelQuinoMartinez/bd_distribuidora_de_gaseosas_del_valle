@@ -45,3 +45,10 @@ ORDER BY cantidad_pedidos DESC;
 SELECT * 
 FROM clientes 
 WHERE nombre_completo LIKE '%Pérez%';
+
+-- ===================================================================================
+-- 6. Consultar productos de ciertas categorías usando IN.
+-- ===================================================================================
+SELECT * 
+FROM productos 
+WHERE id_categoria IN (1, 2, 3);

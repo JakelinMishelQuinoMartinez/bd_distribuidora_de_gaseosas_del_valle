@@ -52,3 +52,21 @@ WHERE nombre_completo LIKE '%Pérez%';
 SELECT * 
 FROM productos 
 WHERE id_categoria IN (1, 2, 3);
+
+-- ===================================================================================
+-- 7. Mostrar el cliente con mayor número de pedidos (subconsulta).
+-- ===================================================================================
+SELECT 
+    c.nombre_completo AS cliente,
+    COUNT(p.id) AS total_pedidos
+FROM clientes c
+JOIN pedidos p ON c.id = p.id_cliente
+GROUP BY c.id, c.nombre_completo
+HAVING COUNT(p.id) = (
+    SELECT MAX(cantidad) 
+    FROM (
+        SELECT COUNT(id) AS cantidad 
+        FROM pedidos 
+        GROUP BY id_cliente
+    ) AS subconsulta
+);

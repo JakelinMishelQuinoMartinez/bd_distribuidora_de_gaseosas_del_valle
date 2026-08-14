@@ -38,3 +38,10 @@ FROM clientes c
 LEFT JOIN pedidos p ON c.id = p.id_cliente
 GROUP BY c.id, c.nombre_completo
 ORDER BY cantidad_pedidos DESC;
+
+-- ===================================================================================
+-- 5. Buscar clientes por nombre parcial usando LIKE.
+-- ===================================================================================
+SELECT * 
+FROM clientes 
+WHERE nombre_completo LIKE '%Pérez%';

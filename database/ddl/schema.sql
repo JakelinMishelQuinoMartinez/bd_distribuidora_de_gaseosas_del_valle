@@ -55,3 +55,14 @@ CREATE TABLE clientes (
     correo_electronico VARCHAR(60) UNIQUE NOT NULL,
     FOREIGN KEY (id_municipio) REFERENCES municipios(id)
 )ENGINE = InnoDB;
+
+-- ======================================================TABLA ENCARGADOS 
+CREATE TABLE encargados (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_completo VARCHAR(120) NOT NULL,
+    identificacion VARCHAR(20) UNIQUE NOT NULL,
+    correo_electronico VARCHAR(60) UNIQUE NOT NULL,
+    nombre_usuario VARCHAR(50) UNIQUE NOT NULL,
+    contrasena VARCHAR(255) NOT NULL,
+    activo BOOLEAN DEFAULT TRUE
+) ENGINE = InnoDB;

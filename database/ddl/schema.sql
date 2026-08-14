@@ -35,3 +35,11 @@ CREATE TABLE departamentos (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL
 ) ENGINE = InnoDB;
+
+-- ======================================================TABLA MUNICIPIOS (Guatemala)
+CREATE TABLE municipios (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    id_departamento INT NOT NULL,
+    FOREIGN KEY (id_departamento) REFERENCES departamentos(id)
+) ENGINE = InnoDB;

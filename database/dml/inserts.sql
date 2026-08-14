@@ -73,3 +73,18 @@ INSERT INTO productos (nombre, id_categoria, volumen_ml, precio, stock_actual, s
 ('Lima-Limón Zero 355ml', 5, 355, 5.00, 110, 20),
 ('Lima-Limón Zero 600ml', 5, 600, 7.50, 115, 20),
 ('Lima-Limón Zero 2L', 5, 2000, 14.00, 70, 15);
+
+-- ======================================================
+-- 3. DEPARTAMENTOS Y MUNICIPIOS (Guatemala)
+-- ======================================================
+INSERT INTO departamentos (nombre) VALUES
+('Guatemala'),
+('Sacatepéquez'),
+('Escuintla'),
+('Quetzaltenango'),
+('Huehuetenango'),
+('Alta Verapaz'),
+('Izabal'),
+('Petén'),
+('Chimaltenango'),
+('Sololá');

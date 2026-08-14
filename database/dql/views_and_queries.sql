@@ -143,3 +143,15 @@ JOIN categorias c ON p.id_categoria = c.id
 WHERE p.stock_actual <= p.stock_minimo
 ORDER BY unidades_faltantes DESC //
 DELIMITER ;
+
+-- Ver todos los productos con stock bajo
+SELECT * FROM vista_productos_bajo_stock;
+
+-- Ver solo los críticos
+SELECT * FROM vista_productos_bajo_stock WHERE nivel_riesgo = 'CRÍTICO - SIN STOCK';
+
+-- Ver productos urgentes (faltan más de 10 unidades)
+SELECT * FROM vista_productos_bajo_stock WHERE unidades_faltantes > 10;
+
+-- Ver productos por categoría
+SELECT * FROM vista_productos_bajo_stock WHERE categoria = 'Cola';

@@ -70,3 +70,15 @@ HAVING COUNT(p.id) = (
         GROUP BY id_cliente
     ) AS subconsulta
 );
+
+-- ===================================================================================
+-- 8. Consultar pedidos y sus totales agrupados por sede.
+-- ===================================================================================
+SELECT 
+    s.nombre AS sede,
+    COUNT(p.id) AS total_pedidos,
+    SUM(p.total_con_iva) AS monto_total
+FROM pedidos p
+JOIN sedes s ON p.id_sede = s.id
+GROUP BY s.id, s.nombre
+ORDER BY monto_total DESC;

@@ -106,3 +106,12 @@ LEFT JOIN pedidos p ON s.id = p.id_sede
 GROUP BY s.id, s.nombre, s.ubicacion
 ORDER BY total_ventas DESC//
 DELIMITER ;
+
+-- Ver todas las sedes con su resumen
+SELECT * FROM vista_resumen_pedidos_por_sede;
+
+-- Ver solo sedes con ventas
+SELECT * FROM vista_resumen_pedidos_por_sede WHERE total_ventas > 0;
+
+-- Ver la sede con más ventas
+SELECT * FROM vista_resumen_pedidos_por_sede ORDER BY total_ventas DESC LIMIT 1;

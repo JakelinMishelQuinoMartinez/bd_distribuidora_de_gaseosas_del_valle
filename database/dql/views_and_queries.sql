@@ -155,3 +155,37 @@ SELECT * FROM vista_productos_bajo_stock WHERE unidades_faltantes > 10;
 
 -- Ver productos por categoría
 SELECT * FROM vista_productos_bajo_stock WHERE categoria = 'Cola';
+
+
+-- ===================================================================================
+-- 3. Muestra clientes con al menos un pedido registrado.
+-- ===================================================================================
+DELIMITER //
+CREATE VIEW vista_clientes_activos AS
+SELECT 
+    c.id AS cliente_id,
+    c.nombre_completo AS nombre_cliente,
+    c.identificacion AS identificacion_cliente,
+    c.telefono AS telefono_cliente,
+    c.correo_electronico AS correo_cliente,
+    m.nombre AS municipio,
+    d.nombre AS departamento,
+    COUNT(p.id) AS total_pedidos,
+    IFNULL(SUM(p.total_con_iva), 0) AS monto_total_gastado,
+    IFNULL(AVG(p.total_con_iva), 0) AS promedio_por_pedido,
+    MAX(p.fecha) AS ultimo_pedido,
+    DATEDIFF(NOW(), MAX(p.fecha)) AS dias_desde_ultimo_pedido,
+    CASE 
+        WHEN COUNT(p.id) >= 10 THEN 'VIP'
+        WHEN COUNT(p.id) >= 5 THEN 'FRECUENTE'
+        WHEN COUNT(p.id) >= 2 THEN 'OCASIONAL'
+        ELSE 'NUEVO'
+    END AS tipo_cliente
+FROM clientes c
+JOIN municipios m ON c.id_municipio = m.id
+JOIN departamentos d ON m.id_departamento = d.id
+JOIN pedidos p ON c.id = p.id_cliente
+GROUP BY c.id, c.nombre_completo, c.identificacion, c.telefono, 
+         c.correo_electronico, m.nombre, d.nombre
+ORDER BY total_pedidos DESC, monto_total_gastado DESC //
+DELIMITER ;

@@ -119,3 +119,12 @@ INSERT INTO encargados (nombre_completo, identificacion, correo_electronico, nom
 ('María Fernanda López', '1234567890102', 'maria.lopez@distribuidora.com', 'mlopez', 'Maria2026', TRUE),
 ('José Miguel Hernández', '1234567890103', 'jose.hernandez@distribuidora.com', 'jhernandez', 'Jose2026', TRUE),
 ('Ana Lucía Morales', '1234567890104', 'ana.morales@distribuidora.com', 'amorales', 'Ana2026', TRUE);
+
+-- ======================================================
+-- 5. SEDES
+-- ======================================================
+INSERT INTO sedes (nombre, ubicacion, id_municipio, capacidad_almacenamiento, id_encargado) VALUES
+('Sede Central Guatemala', 'Zona 10, 5ta Avenida', 1, 5000, 1),
+('Sede Occidente Quetzaltenango', 'Calle Principal, Zona 1', 12, 4000, 2),
+('Sede Sur Escuintla', 'Carretera CA-9, Km 40', 9, 3500, 3),
+('Sede Norte Cobán', 'Carretera a Cobán, Km 150', 18, 3000, 4);

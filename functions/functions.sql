@@ -26,3 +26,14 @@ BEGIN
     RETURN total_con_iva;
 END;
 DELIMITER ;
+
+-- Calcular el total con IVA del pedido con ID = 1
+SELECT fn_calcular_total_con_iva(1) AS total_con_iva;
+-- Ver varios pedidos a la vez
+SELECT 
+    id, 
+    total_sin_iva, 
+    total_con_iva,
+    fn_calcular_total_con_iva(id) AS total_calculado
+FROM pedidos
+WHERE id BETWEEN 1 AND 5;

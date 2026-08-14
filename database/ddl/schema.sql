@@ -7,3 +7,15 @@ CREATE TABLE categorias (
     nombre VARCHAR(50) NOT NULL,
     descripcion VARCHAR(200) NULL
 ) ENGINE = InnoDB;
+
+-- ======================================================TABLA PRODUCTOS
+CREATE TABLE productos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    id_categoria INT NOT NULL,
+    volumen_ml INT NOT NULL,
+    precio DECIMAL(10,2) NOT NULL,
+    stock_actual INT NOT NULL,
+    stock_minimo INT NOT NULL,
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id)
+) ENGINE = InnoDB;

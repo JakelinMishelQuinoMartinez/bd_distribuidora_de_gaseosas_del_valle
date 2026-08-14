@@ -30,3 +30,27 @@ VALUES (1, 1, 5, 5.50);
 SELECT id, nombre, stock_actual 
 FROM productos 
 WHERE id = 1;
+
+-- ======================================================================================================================================
+--  2. Al actualizar el campo precio en la tabla productos, registra la fecha, el precio anterior y el nuevo en una tabla auditoria_precios.
+-- ======================================================================================================================================
+DELIMITER //
+CREATE TRIGGER tr_after_auditar_cambio_precio
+AFTER UPDATE ON productos FOR EACH ROW
+BEGIN
+    -- Solo auditar si el precio cambió realmente
+    IF OLD.precio != NEW.precio THEN
+        INSERT INTO auditoria_precios (
+            id_producto,
+            precio_anterior,
+            precio_nuevo,
+            fecha
+        ) VALUES (
+            NEW.id,
+            OLD.precio,
+            NEW.precio,
+            NOW()
+        );
+    END IF;
+END;
+DELIMITER ;

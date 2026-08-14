@@ -38,8 +38,12 @@ El repositorio está organizado en carpetas, cada una con una responsabilidad es
 
 ---
 
+## Normalización de Datos
+![Normalización de Datos](evidences/normalizacion1.png)
+![Normalización de Datos](evidences/normalizacion2.png)
+
 ##  Diagrama Entidad-Relación (ERD)
-![alt text](evidences/diagramaEER.png)
+![Dagrama ERD](evidences/diagramaEER.png)
 
 ---
 

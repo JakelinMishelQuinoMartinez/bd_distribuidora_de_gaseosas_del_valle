@@ -128,3 +128,28 @@ INSERT INTO sedes (nombre, ubicacion, id_municipio, capacidad_almacenamiento, id
 ('Sede Occidente Quetzaltenango', 'Calle Principal, Zona 1', 12, 4000, 2),
 ('Sede Sur Escuintla', 'Carretera CA-9, Km 40', 9, 3500, 3),
 ('Sede Norte Cobán', 'Carretera a Cobán, Km 150', 18, 3000, 4);
+
+-- ======================================================
+-- 6. CLIENTES
+-- ======================================================
+INSERT INTO clientes (nombre_completo, identificacion, direccion, id_municipio, telefono, correo_electronico) VALUES
+('Juan Pérez Gómez', '1234567890121', 'Calle Real 1-23 Zona 1', 1, '50010001', 'juan.perez@gmail.com'),
+('Ana María Díaz', '1234567890122', 'Avenida Reforma 2-34 Zona 10', 1, '50010002', 'ana.diaz@hotmail.com'),
+('Luis Fernando Méndez', '1234567890123', '3ra Calle 4-56 Zona 2', 2, '50020003', 'luis.mendez@gmail.com'),
+('Marta Elena Castillo', '1234567890124', '5ta Avenida 6-78 Zona 3', 2, '50020004', 'marta.castillo@outlook.com'),
+('Rosa María Flores', '1234567890125', 'Calle Principal 7-89', 3, '50030005', 'rosa.flores@gmail.com'),
+('Pedro Antonio Reyes', '1234567890126', 'Avenida Central 8-90', 3, '50030006', 'pedro.reyes@yahoo.com'),
+('Claudia Beatriz Soto', '1234567890127', 'Calle del Comercio 9-10', 4, '50040007', 'claudia.soto@gmail.com'),
+('Ricardo José Méndez', '1234567890128', 'Plaza Mayor 10-11', 4, '50040008', 'ricardo.mendez@hotmail.com'),
+('Sandra Elizabeth González', '1234567890129', 'Calle de los Álamos 11-12', 5, '50050009', 'sandra.gonzalez@gmail.com'),
+('Manuel Alejandro Morales', '1234567890130', 'Avenida de las Américas 12-13', 5, '50050010', 'manuel.morales@gmail.com'),
+('Laura Cristina López', '1234567890131', 'Calle del Bosque 13-14', 6, '50060011', 'laura.lopez@outlook.com'),
+('Carlos Eduardo Guerra', '1234567890132', 'Residencial Las Flores 14-15', 6, '50060012', 'carlos.guerra@gmail.com'),
+('Marisol Elena Ramos', '1234567890133', 'Calle de los Pinos 15-16', 7, '50070013', 'marisol.ramos@gmail.com'),
+('Roberto Carlos Martínez', '1234567890134', 'Avenida del Lago 16-17', 7, '50070014', 'roberto.martinez@hotmail.com'),
+('Gabriela Alejandra Torres', '1234567890135', 'Calle del Sol 17-18', 8, '50080015', 'gabriela.torres@gmail.com'),
+('Fernando José Chávez', '1234567890136', 'Avenida de la Luna 18-19', 8, '50080016', 'fernando.chavez@yahoo.com'),
+('Diana Carolina Rodas', '1234567890137', 'Calle del Mar 19-20', 9, '50090017', 'diana.rodas@gmail.com'),
+('Héctor Eduardo Sosa', '1234567890138', 'Avenida del Valle 20-21', 10, '50100018', 'hector.sosa@gmail.com'),
+('Elena Raquel Pérez', '1234567890139', 'Calle de la Montaña 21-22', 10, '50100019', 'elena.perez@outlook.com'),
+('Luis Arturo Aguilar', '1234567890140', 'Residencial Los Jardines 22-23', 11, '50110020', 'luis.aguilar@gmail.com');

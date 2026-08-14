@@ -43,3 +43,15 @@ CREATE TABLE municipios (
     id_departamento INT NOT NULL,
     FOREIGN KEY (id_departamento) REFERENCES departamentos(id)
 ) ENGINE = InnoDB;
+
+-- ======================================================TABLA CLIENTES
+CREATE TABLE clientes (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_completo VARCHAR(120) NOT NULL,
+    identificacion CHAR(13) UNIQUE NOT NULL,
+    direccion VARCHAR(150) NOT NULL,
+    id_municipio INT NOT NULL,
+    telefono VARCHAR(15) UNIQUE NOT NULL,
+    correo_electronico VARCHAR(60) UNIQUE NOT NULL,
+    FOREIGN KEY (id_municipio) REFERENCES municipios(id)
+)ENGINE = InnoDB;

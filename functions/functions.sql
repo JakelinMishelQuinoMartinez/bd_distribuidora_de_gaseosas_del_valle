@@ -37,3 +37,27 @@ SELECT
     fn_calcular_total_con_iva(id) AS total_calculado
 FROM pedidos
 WHERE id BETWEEN 1 AND 5;
+
+-- ===================================================================================
+--  2. Retorna un mensaje indicando si hay suficiente stock antes de confirmar el pedido.
+-- ===================================================================================
+DELIMITER //
+CREATE FUNCTION fn_validar_stock(p_id_producto INT, p_cantidad INT)
+RETURNS VARCHAR(100)
+DETERMINISTIC
+BEGIN
+    DECLARE stock_actual INT;
+    DECLARE mensaje VARCHAR(100);
+    -- Obtener el stock actual del producto
+    SELECT stock_actual INTO stock_actual
+    FROM productos
+    WHERE id = p_id_producto;
+    -- Verificar si hay suficiente stock
+    IF stock_actual >= p_cantidad THEN
+        SET mensaje = CONCAT('Stock disponible. Cantidad solicitada: ', p_cantidad, '. Stock actual: ', stock_actual);
+    ELSE
+        SET mensaje = CONCAT('Stock insuficiente. Cantidad solicitada: ', p_cantidad, '. Stock actual: ', stock_actual);
+    END IF;
+    RETURN mensaje;
+END;
+DELIMITER ;

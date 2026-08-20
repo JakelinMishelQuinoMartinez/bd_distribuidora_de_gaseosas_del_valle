@@ -24,7 +24,7 @@ BEGIN
     -- Aplicar IVA del 12%
     SET total_con_iva = total_sin_iva * 1.12;
     RETURN total_con_iva;
-END;
+END//
 DELIMITER ;
 
 -- Calcular el total con IVA del pedido con ID = 1
@@ -46,20 +46,23 @@ CREATE FUNCTION fn_validar_stock(p_id_producto INT, p_cantidad INT)
 RETURNS VARCHAR(100)
 DETERMINISTIC
 BEGIN
-    DECLARE stock_actual INT;
-    DECLARE mensaje VARCHAR(100);
-    -- Obtener el stock actual del producto
-    SELECT stock_actual INTO stock_actual
-    FROM productos
-    WHERE id = p_id_producto;
-    -- Verificar si hay suficiente stock
-    IF stock_actual >= p_cantidad THEN
-        SET mensaje = CONCAT('Stock disponible. Cantidad solicitada: ', p_cantidad, '. Stock actual: ', stock_actual);
-    ELSE
-        SET mensaje = CONCAT('Stock insuficiente. Cantidad solicitada: ', p_cantidad, '. Stock actual: ', stock_actual);
-    END IF;
-    RETURN mensaje;
-END;
+   DECLARE v_stock_actual INT;
+   DECLARE v_mensaje VARCHAR(100);
+   -- Obtener el stock actual del producto
+   SELECT stock_actual INTO v_stock_actual
+   FROM productos
+   WHERE id = p_id_producto;
+   -- Verificar si el producto existe
+   IF v_stock_actual IS NULL THEN
+       RETURN 'El producto no existe.';
+   END IF;
+   -- Verificar si hay suficiente stock
+   IF v_stock_actual >= p_cantidad THEN
+       SET v_mensaje = CONCAT('Stock disponible. Cantidad solicitada: ', p_cantidad, '. Stock actual: ', v_stock_actual);
+   ELSE
+       SET v_mensaje = CONCAT('Stock insuficiente. Cantidad solicitada: ', p_cantidad, '. Stock actual: ', v_stock_actual);
+   END IF;
+END //
 DELIMITER ;
 
 -- Validar si hay stock para el producto ID = 1 con cantidad 10

@@ -26,7 +26,7 @@ CREATE TABLE auditoria_precios (
     id_producto INT NOT NULL,
     precio_anterior DECIMAL(10,2) NOT NULL,
     precio_nuevo DECIMAL(10,2) NOT NULL,
-    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    fecha_modificacion DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_producto) REFERENCES productos(id)
 ) ENGINE = InnoDB;
 

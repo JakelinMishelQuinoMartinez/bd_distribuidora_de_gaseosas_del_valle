@@ -44,7 +44,7 @@ BEGIN
             id_producto,
             precio_anterior,
             precio_nuevo,
-            fecha
+            fecha_modificacion
         ) VALUES (
             NEW.id,
             OLD.precio,

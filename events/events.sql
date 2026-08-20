@@ -21,6 +21,9 @@ ON SCHEDULE EVERY 1 DAY
 STARTS '2026-08-14 08:00:00'
 DO
 BEGIN
+    -- Eliminar registros que NO sean de hoy
+    DELETE FROM logs_stock_bajo
+    WHERE DATE(fecha) < CURDATE();
     -- Solo va a guardar en una tabla los productos con stock bajo
     INSERT INTO logs_stock_bajo (producto_id, mensaje)
     SELECT 
